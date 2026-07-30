@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --navy-dark: #090d16;
+    --navy-main: #0f172a;
+    --navy-card: #1e293b;
+    --navy-border: #334155;
+    
+    --periwinkle-light: #c7d2fe;
+    --periwinkle-main: #818cf8;
+    --periwinkle-bright: #6366f1;
+    --periwinkle-accent: #4f46e5;
+    --periwinkle-glow: rgba(129, 140, 248, 0.25);
+  }
+
+  body {
+    background-color: var(--navy-dark);
+    color: #f8fafc;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--periwinkle-glow);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.glass-navy {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+}
+
+.glass-periwinkle {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
