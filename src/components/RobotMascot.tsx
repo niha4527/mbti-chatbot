@@ -38,7 +38,23 @@ export function RobotMascot({
   return (
     <div className="w-full flex flex-col items-center justify-center space-y-2 sm:space-y-3">
       {/* Floating Robot Mascot (Dominant visual scaling, minimal whitespace) */}
-      <div className="relative w-full h-[200px] sm:h-[280px] lg:h-[420px] max-w-sm sm:max-w-md lg:max-w-lg flex items-center justify-center shrink-0">
+<div
+  className="
+    relative
+    w-full
+    h-[200px]
+    sm:h-[240px]
+    md:h-[300px]
+    lg:h-[340px]
+    xl:h-[380px]
+    max-w-xs
+    sm:max-w-sm
+    md:max-w-md
+    lg:max-w-md
+    xl:max-w-lg
+    flex items-center justify-center shrink-0
+  "
+>
         <Image
           src="/mascot.png"
           alt="ROBO-CHIPTECH MASCOT"
