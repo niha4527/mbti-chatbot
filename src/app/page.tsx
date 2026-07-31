@@ -247,17 +247,17 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen max-h-screen flex flex-col justify-between overflow-hidden circuit-bg text-[var(--text)] font-sans relative">
+    <div className="min-h-screen flex flex-col justify-between overflow-x-hidden circuit-bg text-[var(--text)] font-sans relative">
       <Header 
         isLightMode={isLightMode} 
         onToggleLightMode={() => setIsLightMode(!isLightMode)} 
       />
 
-      {/* Main 2-Column Grid Layout */}
-      <main className="flex-1 flex flex-col md:flex-row items-center justify-center gap-6 px-6 py-2 overflow-hidden max-w-7xl mx-auto w-full">
+      {/* Main Responsive Layout */}
+      <main className="flex-1 flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 px-4 sm:px-6 py-4 sm:py-6 overflow-x-hidden max-w-7xl mx-auto w-full">
         
-        {/* Left Column: Persistent Mascot Companion & Reactive AI Speech Bubble */}
-        <div className="w-full md:w-1/3 flex flex-col justify-center items-center">
+        {/* Left/Top Column: Persistent Mascot Companion & Reactive AI Speech Bubble */}
+        <div className="w-full lg:w-1/2 flex flex-col justify-center items-center max-w-md lg:max-w-lg">
           <RobotMascot
             status={getRobotStatus()}
             userName={userName}
@@ -267,9 +267,9 @@ export default function Home() {
           />
         </div>
 
-        {/* Right Column: Assessment Screen Components */}
+        {/* Right/Bottom Column: Assessment Screen Components */}
         <div
-          className={`w-full md:w-2/3 flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${
+          className={`w-full lg:w-1/2 flex flex-col justify-center items-center max-w-xl transition-all duration-500 ease-in-out ${
             isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
           }`}
         >
@@ -286,8 +286,8 @@ export default function Home() {
 
           {/* Simple Calculating State */}
           {stage === "ANALYZING" && (
-            <div className="flex flex-col items-center justify-center space-y-4 text-[var(--accent)]">
-              <span className="w-8 h-8 rounded-full bg-[var(--cyan)]"></span>
+            <div className="flex flex-col items-center justify-center space-y-4 text-[var(--accent)] py-12">
+              <span className="w-8 h-8 rounded-full bg-[var(--cyan)] animate-pulse"></span>
               <p className="font-pixel text-xl uppercase tracking-wider">
                 Calculating...
               </p>
@@ -305,7 +305,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="w-full border-t border-[var(--border)] py-2.5 text-center text-xs font-pixel text-[var(--accent)] shrink-0">
+      <footer className="w-full border-t border-[var(--border)] py-3 px-4 text-center text-xs font-pixel text-[var(--accent)] shrink-0">
         CHIPTECH • RV UNIVERSITY • WHERE IDEAS GET WIRED
       </footer>
     </div>

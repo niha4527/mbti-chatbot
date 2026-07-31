@@ -18,17 +18,17 @@ export function NameStep({ onSubmit }: NameStepProps) {
   };
 
   return (
-    <div className="w-full bracket-frame rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
-      <div className="text-left space-y-2">
-        <h2 className="text-2xl sm:text-3xl font-pixel text-[var(--text)] tracking-wide uppercase">
+    <div className="w-full bracket-frame rounded-2xl p-5 sm:p-8 shadow-xl space-y-5 sm:space-y-6">
+      <div className="text-left space-y-1.5 sm:space-y-2">
+        <h2 className="text-xl sm:text-3xl font-pixel text-[var(--text)] tracking-wide uppercase">
           Enter Your Name
         </h2>
-        <p className="text-base text-[var(--accent)] font-medium">
+        <p className="text-sm sm:text-base text-[var(--accent)] font-medium">
           Start your 5-question ChipTech MBTI assessment to unlock your personality archetype.
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
         <div>
           <label htmlFor="name-input" className="block text-xs font-pixel text-[var(--accent-light)] uppercase mb-2 tracking-wider">
             Your Name / Handle
@@ -42,7 +42,7 @@ export function NameStep({ onSubmit }: NameStepProps) {
               if (error) setError("");
             }}
             placeholder=""
-            className="w-full px-5 py-3 bg-[var(--surface)] border-2 border-[var(--border)] rounded-xl text-[var(--text)] text-lg placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[var(--cyan)] focus:border-[var(--accent)] font-semibold transition shadow-inner"
+            className="w-full min-h-[48px] px-4 sm:px-5 py-3 bg-[var(--surface)] border-2 border-[var(--border)] rounded-xl text-[var(--text)] text-base sm:text-lg placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[var(--cyan)] focus:border-[var(--accent)] font-semibold transition shadow-inner"
             autoFocus
             autoComplete="off"
           />
@@ -51,7 +51,7 @@ export function NameStep({ onSubmit }: NameStepProps) {
 
         <button
           type="submit"
-          className="w-full py-4 px-6 bg-[var(--accent)] hover:bg-[var(--cyan)] text-[var(--inverted)] font-pixel text-base uppercase tracking-wider rounded-xl shadow-lg border border-[var(--accent-light)] transition-all transform active:scale-98 cursor-pointer flex items-center justify-center gap-2 font-bold"
+          className="w-full min-h-[48px] py-3.5 sm:py-4 px-6 bg-[var(--accent)] hover:bg-[var(--cyan)] text-[var(--inverted)] font-pixel text-sm sm:text-base uppercase tracking-wider rounded-xl shadow-lg border border-[var(--accent-light)] transition-all transform active:scale-98 cursor-pointer flex items-center justify-center gap-2 font-bold"
         >
           <span>Start Assessment</span>
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
