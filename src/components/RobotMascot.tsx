@@ -44,14 +44,14 @@ export function RobotMascot({
     w-full
     h-[200px]
     sm:h-[240px]
-    md:h-[300px]
-    lg:h-[340px]
-    xl:h-[380px]
+    md:h-[280px]
+    lg:h-[300px]
+    xl:h-[340px]
     max-w-xs
     sm:max-w-sm
     md:max-w-md
-    lg:max-w-md
-    xl:max-w-lg
+    lg:max-w-sm
+    xl:max-w-md
     flex items-center justify-center shrink-0
   "
 >
