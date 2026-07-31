@@ -2,59 +2,126 @@
 
 @layer base {
   :root {
-    --navy-dark: #090d16;
-    --navy-main: #0f172a;
-    --navy-card: #1e293b;
-    --navy-border: #334155;
+    --font-pixel: var(--font-pixel), 'Courier New', monospace;
     
-    --periwinkle-light: #c7d2fe;
-    --periwinkle-main: #818cf8;
-    --periwinkle-bright: #6366f1;
-    --periwinkle-accent: #4f46e5;
-    --periwinkle-glow: rgba(129, 140, 248, 0.25);
+    /* Dark Mode (Default) */
+    --bg: #0b101d;
+    --card: #353f5c;
+    --surface: #0e1526;
+    --text: #ffffff;
+    --text-muted: #f1f5f9;
+    --accent: #7eb6e8;
+    --accent-light: #b8dbf8;
+    --cyan: #38bdf8;
+    --inverted: #020617;
+    --border: rgba(126, 182, 232, 0.35);
   }
 
-  body {
-    background-color: var(--navy-dark);
-    color: #f8fafc;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  .light-mode {
+    /* Light Mode (Periwinkle BG, Navy Accent) */
+    --bg: #adcfed;
+    --card: #98bbda;
+    --surface: #b8dbf8;
+    --text: #0e1526;
+    --text-muted: #141c33;
+    --accent: #141c33;
+    --accent-light: #1a2542;
+    --cyan: #091126;
+    --inverted: #f1f5f9;
+    --border: rgba(20, 28, 51, 0.35);
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--bg);
+    color: var(--text-muted);
+    font-family: var(--font-inter), system-ui, sans-serif;
   }
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(1deg);
-  }
+.font-pixel {
+  font-family: var(--font-pixel);
 }
 
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px var(--periwinkle-glow);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
-  }
+/* Circuit Trace Background Pattern */
+.circuit-bg {
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(var(--border) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, transparent, transparent);
+  background-size: 28px 28px, 100% 100%;
 }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-.animate-glow {
-  animation: pulseGlow 3s ease-in-out infinite;
-}
-
-.glass-navy {
-  background: rgba(15, 23, 42, 0.85);
+/* Bracket Corner Target Reticle Frame */
+.bracket-frame {
+  position: relative;
+  background: var(--card);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  border: 1px solid var(--border);
 }
 
-.glass-periwinkle {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(129, 140, 248, 0.3);
+.bracket-frame::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 14px;
+  height: 14px;
+  border-top: 2.5px solid var(--accent);
+  border-left: 2.5px solid var(--accent);
+  z-index: 10;
+}
+
+.bracket-frame::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  border-bottom: 2.5px solid var(--accent);
+  border-right: 2.5px solid var(--accent);
+  z-index: 10;
+}
+
+/* Mascot Idle Bobbing Animation */
+@keyframes MascotIdle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.mascot-idle {
+  animation: MascotIdle 3.5s ease-in-out infinite;
+}
+
+/* Boot Flicker Animation */
+@keyframes BootFlicker {
+  0% { opacity: 0.2; transform: scale(0.99); }
+  20% { opacity: 0.9; transform: scale(1); }
+  40% { opacity: 0.4; }
+  60% { opacity: 1; }
+  80% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+.boot-flicker {
+  animation: BootFlicker 0.75s ease-out forwards;
+}
+
+/* Result Reveal Glitch */
+@keyframes GlitchReveal {
+  0% { transform: scale(0.95); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.glitch-reveal {
+  animation: GlitchReveal 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }

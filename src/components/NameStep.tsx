@@ -11,27 +11,27 @@ export function NameStep({ onSubmit }: NameStepProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!nameInput.trim()) {
-      setError("Please enter a valid developer name or handle!");
+      setError("Please enter your name!");
       return;
     }
     onSubmit(nameInput.trim());
   };
 
   return (
-    <div className="w-full max-w-lg mx-auto glass-navy rounded-2xl p-6 sm:p-8 border border-indigo-500/30 shadow-2xl space-y-6">
-      <div className="text-center space-y-2">
-        <h2 className="text-2xl font-bold text-white tracking-tight">
-          Initialize Diagnostics
+    <div className="w-full bracket-frame rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+      <div className="text-left space-y-2">
+        <h2 className="text-2xl sm:text-3xl font-pixel text-[var(--text)] tracking-wide uppercase">
+          Enter Your Name
         </h2>
-        <p className="text-sm text-indigo-200/80">
-          Enter your name or GitHub handle to calibrate your MBTI archetype.
+        <p className="text-base text-[var(--accent)] font-medium">
+          Start your 5-question ChipTech MBTI assessment to unlock your personality archetype.
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label htmlFor="name-input" className="block text-xs font-mono text-indigo-300 uppercase mb-2">
-            Developer / User Name
+          <label htmlFor="name-input" className="block text-xs font-pixel text-[var(--accent-light)] uppercase mb-2 tracking-wider">
+            Your Name / Handle
           </label>
           <input
             id="name-input"
@@ -41,20 +41,21 @@ export function NameStep({ onSubmit }: NameStepProps) {
               setNameInput(e.target.value);
               if (error) setError("");
             }}
-            placeholder="e.g. Alex, Linus, Octocat"
-            className="w-full px-4 py-3 bg-slate-900/90 border border-indigo-400/40 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-400 font-medium transition"
+            placeholder=""
+            className="w-full px-5 py-3 bg-[var(--surface)] border-2 border-[var(--border)] rounded-xl text-[var(--text)] text-lg placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[var(--cyan)] focus:border-[var(--accent)] font-semibold transition shadow-inner"
             autoFocus
+            autoComplete="off"
           />
-          {error && <p className="text-xs text-rose-400 mt-2 font-medium">{error}</p>}
+          {error && <p className="text-sm text-rose-500 mt-2 font-semibold">{error}</p>}
         </div>
 
         <button
           type="submit"
-          className="w-full py-3.5 px-6 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/30 border border-indigo-400/50 transition-all transform active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full py-4 px-6 bg-[var(--accent)] hover:bg-[var(--cyan)] text-[var(--inverted)] font-pixel text-base uppercase tracking-wider rounded-xl shadow-lg border border-[var(--accent-light)] transition-all transform active:scale-98 cursor-pointer flex items-center justify-center gap-2 font-bold"
         >
           <span>Start Assessment</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
         </button>
       </form>

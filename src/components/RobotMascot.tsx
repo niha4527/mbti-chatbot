@@ -5,56 +5,62 @@ interface RobotMascotProps {
   status: "idle" | "asking_name" | "question" | "analyzing" | "result";
   userName?: string;
   questionNumber?: number;
+  aiReaction?: string;
+  isReactionLoading?: boolean;
 }
 
-export function RobotMascot({ status, userName, questionNumber }: RobotMascotProps) {
-  const getSpeechBubble = () => {
+export function RobotMascot({
+  status,
+  userName,
+  questionNumber,
+  aiReaction,
+  isReactionLoading,
+}: RobotMascotProps) {
+  const getDefaultMessage = () => {
     switch (status) {
       case "asking_name":
-        return "Hey dev! I'm RoastBot 🤖. What's your name before we initialize your personality stack?";
+        return "Welcome to ChipTech!  Enter your name to diagnose your personality type.";
       case "question":
-        return `Alright ${userName || "friend"}, question ${questionNumber} of 5. Be honest—no lying to the compiler!`;
+        return `Question ${questionNumber} of 5 for you, ${userName || "friend"}. Be 100% real!`;
       case "analyzing":
-        return "Compiling your answers... analyzing code smells, ego parameters, and coffee intake...";
+        return "Connecting circuits... calculating your sass profile and energy levels...";
       case "result":
-        return `Behold ${userName || "dev"}! Your diagnostic report is ready. Prepare your feelings! ⚡`;
+        return `Diagnostic complete for ${userName || "you"}! Check your reading on the right ✨`;
       default:
-        return "Initializing system diagnostics...";
+        return "Ready to discover your personality profile?";
     }
   };
 
+  const currentSpeech = isReactionLoading
+    ? "Processing your choice..."
+    : aiReaction || getDefaultMessage();
+
   return (
-    <div className="flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl glass-periwinkle border border-indigo-400/30 my-4 shadow-xl">
-      <div className="relative group flex-shrink-0">
-        <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-indigo-500 to-periwinkle-bright opacity-50 blur-md group-hover:opacity-75 transition duration-500 animate-glow"></div>
-        <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-slate-950 border-2 border-indigo-400/50 p-2 flex items-center justify-center shadow-inner">
-          <Image
-            src="/mascot.png"
-            alt="ROBO-CHIPTECH MASCOT"
-            width={100}
-            height={100}
-            className={`object-contain transition-transform duration-300 ${
-              status === "analyzing"
-                ? "animate-bounce"
-                : "animate-float hover:scale-105"
-            }`}
-            priority
-          />
-        </div>
+    <div className="w-full flex flex-col items-center justify-center p-5 space-y-4">
+      {/* Floating Robot Mascot (Bigger size, no frame, no glow) */}
+      <div className="relative w-96 h-96 md:w-[50rem] md:h-[24rem] flex items-center justify-center mb-2">
+        <Image
+          src="/mascot.png"
+          alt="ROBO-CHIPTECH MASCOT"
+          width={800}
+          height={800}
+          className={`object-contain mascot-idle transition-transform duration-300 ${
+            status === "analyzing" ? "animate-bounce" : "hover:scale-105"
+          }`}
+          priority
+        />
       </div>
 
-      <div className="relative flex-1 bg-slate-900/90 border border-indigo-500/30 rounded-xl p-4 shadow-md">
-        {/* Speech Bubble Arrow */}
-        <div className="hidden sm:block absolute -left-2 top-1/2 -translate-y-1/2 w-0 h-0 border-y-8 border-y-transparent border-r-8 border-r-indigo-500/30"></div>
-        
-        <div className="flex items-center gap-2 mb-1">
-          <span className="inline-block w-2 h-2 rounded-full bg-indigo-400 animate-ping"></span>
-          <span className="text-xs font-semibold text-indigo-300 tracking-wider uppercase font-mono">
-            RoastBot 🤖 Status: {status.toUpperCase()}
+      {/* Reactive Speech Bubble (No glow on dots) */}
+      <div className="w-full bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 text-center relative bracket-frame">
+        <div className="flex items-center justify-center gap-2 mb-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent)]"></span>
+          <span className="text-xs font-pixel text-[var(--accent)] tracking-wider uppercase">
+            ROASTBOT • {status.toUpperCase()}
           </span>
         </div>
-        <p className="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
-          {getSpeechBubble()}
+        <p className="text-sm sm:text-base text-[var(--text)] font-medium leading-snug transition-all duration-300">
+          {currentSpeech}
         </p>
       </div>
     </div>
